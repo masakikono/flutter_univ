@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_univ/next_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,21 +45,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("Flutter大学！！"),
         actions: <Widget>[
-          Icon(Icons.add),
+          Icon(Icons.share),
         ],
       ),
-      body: Container(
-        height: double.infinity,
-        color: Colors.red,
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Row(
-            children: <Widget>[
-              Text("こんにちは"),
-              Text("こんばんは"),
-              Text("またあいましょう"),
-            ],
-          ),
+      body: Center(
+        child: ElevatedButton(
+          child: Text('次へ'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NextPage(),
+              ),
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
