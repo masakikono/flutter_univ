@@ -41,49 +41,33 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String text = 'つぎへ';
 
+  final myFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter大学！！"),
-        actions: <Widget>[
-          Icon(Icons.share),
-        ],
       ),
       body: Container(
         width: double.infinity,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Text(
-                'マサキさん',
-                textAlign: TextAlign.end,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.green,
-                  fontWeight: FontWeight.w900,
-                  fontStyle: FontStyle.italic,
-                  decoration: TextDecoration.underline,
-                ),
+            TextField(
+              autofocus: true,
+              decoration: InputDecoration(
+                hintText: 'ここに書きなされ',
               ),
             ),
-            DefaultTextStyle(
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.pink,
-              ),
-              child: Column(
-                children: <Widget>[
-                  Text('ジーコさん'),
-                  Text('ジーコさん'),
-                  Text('ジーコさん'),
-                ],
-              ),
+            TextField(
+              focusNode: myFocusNode,
             ),
-            Text('ジーコさん'),
+            ElevatedButton(
+              child: Text('フォーカス！'),
+              onPressed: () {
+                //コメント
+              },
+            )
           ],
         ),
       ),
