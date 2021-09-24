@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.brown,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -31,17 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  String text = 'つぎへ';
-
-  final myFocusNode = FocusNode();
+  final items = List<String>.generate(11, (i) => "Item $i");
 
   @override
   Widget build(BuildContext context) {
@@ -50,27 +41,32 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Flutter大学！！"),
       ),
       body: Container(
-        width: double.infinity,
-        child: Column(
-          children: <Widget>[
-            TextField(
-              autofocus: true,
-              decoration: InputDecoration(
-                hintText: 'ここに書きなされ',
+          width: double.infinity,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Container(
+                width: 160.0,
+                color: Colors.red,
               ),
-            ),
-            TextField(
-              focusNode: myFocusNode,
-            ),
-            ElevatedButton(
-              child: Text('フォーカス！'),
-              onPressed: () {
-                //コメント
-              },
-            )
-          ],
-        ),
-      ),
+              Container(
+                width: 160.0,
+                color: Colors.blue,
+              ),
+              Container(
+                width: 160.0,
+                color: Colors.green,
+              ),
+              Container(
+                width: 160.0,
+                color: Colors.yellow,
+              ),
+              Container(
+                width: 160.0,
+                color: Colors.orange,
+              ),
+            ],
+          )),
     );
   }
 }
